@@ -2,6 +2,18 @@
 
 class QuickViewTheProductCest
 {
+    $seacrhBoxCss = '#search_query_top';
+    $searchBoxXpath = '//*[@id="search_query_top"]';
+    $clickSearchButtonCss = '#searchbox';
+    $clickSearchButtonXpath = '//*[@id="searchbox"]/button';
+    $clickOnQuickViewSectionCss = 'a[class="quick-view"]';
+    $clickOnQuickViewSectionXpath = '//*[@id="homefeatured"]/li[2]/div/div[1]/div/a[2]';
+    $blouseProductCSS = 'body[id="product"]';
+    $blouseProductXpath = '//*[@id="product"]';
+    $blouseTextAssertCss = 'h1[itemprop="name"]';
+    $blouseTextAssertXpath = '//*[@id="product"]/div/div/div[2]/h1';
+
+
     public function quickViewTheProduct(AcceptanceTester $I)
     {
         $I->amOnPage(''); //переходим на страницу
