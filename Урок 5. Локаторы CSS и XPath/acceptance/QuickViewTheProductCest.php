@@ -2,10 +2,10 @@
 
 class QuickViewTheProductCest
 {
-    $seacrhBoxCss = '#search_query_top';
+    $seacrhBoxCss = 'input[id="search_query_top"]';
     $searchBoxXpath = '//*[@id="search_query_top"]';
-    $clickSearchButtonCss = '#searchbox';
-    $clickSearchButtonXpath = '//*[@id="searchbox"]/button';
+    $clickSearchButtonCss = 'button[name="submit_search"]';
+    $clickSearchButtonXpath = '//button[@name="submit_search"]';
     $clickOnQuickViewSectionCss = 'a[class="quick-view"]';
     $clickOnQuickViewSectionXpath = '//*[@id="homefeatured"]/li[2]/div/div[1]/div/a[2]';
     $blouseProductCSS = 'body[id="product"]';
