@@ -1,6 +1,6 @@
 <?php
 
-class QuickViewTheProductCest
+class productSearchCest
 {
     public function quickViewTheProduct(AcceptanceTester $I)
     {
@@ -9,7 +9,7 @@ class QuickViewTheProductCest
         $I->waitForElementVisible('#homefeatured > li:nth-child(2) > div > div.left-block > div > a.quick-view'); //пока надпись не появится
         $I->click('#homefeatured > li:nth-child(2) > div > div.left-block > div > a.quick-view'); //нажимаем на quick view
         $I->switchToIFrame('iframe.fancybox-iframe'); // переключаемся на iframe
-        $I->waitForElementVisible('body[class="product product-2 product-blouse category-7 category-blouses hide-left-column hide-right-column content_only lang_en"]'); // в окне quick view в первую очкеред прояверяем что объект это блузка 
-        $I->waitForText('Blouse', 'h1[itemprop="name"]'); //а уже потом проверяем по самому тексту продукта
+        $I->waitForElementVisible('#product'); // после нажатия quick view дожидаемся появления окна с продуктом
+        $I->waitForText('Blouse', 10, 'h1[itemprop="name"]'); //а уже потом проверяем по тексту что продукт необходимый нам
     }
 }
