@@ -10,9 +10,6 @@ class QuickViewTheProductCest
     $clickOnQuickViewSectionXpath = '//ul[@id="homefeatured"]//li[2]//a[@class="quick-view"]';
     $blouseProductCSS = 'body[id="product"]';
     $blouseProductXpath = '//*[@id="product"]';
-    $blouseTextAssertCss = 'h1[itemprop="name"]';
-    $blouseTextAssertXpath = '//body[@id="product"]//h1';
-
 
     public function quickViewTheProduct(AcceptanceTester $I)
     {
