@@ -21,7 +21,7 @@ class TheHabrPageCest
       * Функция по принципу Data Provider, где мы заносим значения для выполнения селектора clickOnSection
       */
      protected function getListOfSections(){
-            return [
+            $randomList = [
             ['clickOnSection' => 'Разработка', 'url' => 'develop'],
             ['clickOnSection' => 'Администрирование', 'url' => 'admin'],
             ['clickOnSection' => 'Дизайн', 'url' => 'design'],
@@ -29,14 +29,7 @@ class TheHabrPageCest
             ['clickOnSection' => 'Маркетинг', 'url' => 'marketing'],
             ['clickOnSection' => 'Научпоп', 'url' => 'popsci']
             ];
+        shuffle($randomList);
+        return array_slice($randomList, 0, 2);
         }
-
-        /*public $randomSections = [
-            ['clickOnSection' => $this->getRandomSections],
-            ['clickOnSection' => $this->getRandomSections]
-            ];
-
-        public function getRandomSections(){
-        return $this->randomSections[array_rand($this->randomSections)];
-        }*/
 }
