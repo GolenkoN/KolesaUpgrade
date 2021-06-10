@@ -7,7 +7,7 @@ class CountNumberOfProductsCest
     $clickSearchButtonCss = '#searchbox';
     $clickSearchButtonXpath = '//*[@id="searchbox"]/button';
     $assertTheNumberOfElementsCss = 'div[class="product-container"]';
-    $assertTheNumberOfElementsXpath = '//*[@id="center_column"]/ul/li[2]/div';
+    $assertTheNumberOfElementsXpath = '//div[@class="product-container"]';
     
     public function checkTheNumberOfTheProducts(FunctionalTester $I)
     {
