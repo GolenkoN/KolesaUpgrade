@@ -7,11 +7,11 @@ class QuickViewTheProductCest
     $clickSearchButtonCss = 'button[name="submit_search"]';
     $clickSearchButtonXpath = '//button[@name="submit_search"]';
     $clickOnQuickViewSectionCss = 'a[class="quick-view"]';
-    $clickOnQuickViewSectionXpath = '//*[@id="homefeatured"]/li[2]/div/div[1]/div/a[2]';
+    $clickOnQuickViewSectionXpath = '//ul[@id="homefeatured"]//li[2]//a[@class="quick-view"]';
     $blouseProductCSS = 'body[id="product"]';
     $blouseProductXpath = '//*[@id="product"]';
     $blouseTextAssertCss = 'h1[itemprop="name"]';
-    $blouseTextAssertXpath = '//*[@id="product"]/div/div/div[2]/h1';
+    $blouseTextAssertXpath = '//body[@id="product"]//h1';
 
 
     public function quickViewTheProduct(AcceptanceTester $I)
