@@ -18,7 +18,7 @@ class TheHabrPageCest
     }
       
      /**
-      * Функция по принципу Data Provider, где мы заносим значения для выполнения селектора clickOnSection
+      * Функция по принципу Data Provider, где мы заносим значения для выполнения селектора clickOnSection, и массив randomList для получения случайного значения
       */
      protected function getListOfSections(){
             $randomList = [
