@@ -6,11 +6,14 @@ class TestDbCollectionCest extends AcceptanceTester
 {
     public const NUMBER = 10;    
     public $data;
-    public $users;
+    public $users = array();
 
+    /**
+     * Функция для создания пользователей
+     */
     public function _before(AcceptanceTester $I)
     {
-       //С помощью цикла и фейкера создаем 10 пользователй, и проверяем их наличие в бд
+       //С помощью цикла и фэйкера создаем 10 пользователей
         for($i = 1; $i<=self::NUMBER; $i++) {
             $faker = $I->callFaker();
     
@@ -27,46 +30,52 @@ class TestDbCollectionCest extends AcceptanceTester
                 "owner" => 'itsmadikenzhebayev',
             ];
     
+            //Проверяем их наличие в бд
             $I -> haveInCollection('people', $this->data);
-            $I -> seeInCollection('people',$this->data);
-
+            $I -> seeInCollection('people', $this->data);
+            
+            //забираем данные и кладем их в массив
             $user = $I->grabFromCollection('people', $this->data);
             array_push($this->users, $user);
-                       
         }
     }
 
-    // Проверка на наличие пользваотелей на странице, после чего удаление со значением killedBySnap
-    public function snapKillTest(AcceptanceTester $I)
+    /**
+     * Функция для удаления пользователей со значением 'canBeKilledBySnap'=true
+     */
+    public function deleteUsersBySnap(AcceptanceTester $I)
     {
-       
-        $I -> amOnPage(snapPage::$URL);
-        //проверяем отображение каждого юзера
+       $I -> amOnPage(snapPage::$URL);
+        
+        //проверяем отображение каждого пользователя через перебор массива
         foreach($this->users as $value) {
-            $I -> see($value ['name']);
+            $I->see($value ['name']);
         }  
-        $I -> click(snapPage::$snapButton);
-        $I->wait(10);
-        //создаем две переменные для храрения данных тех кто должен быть улдален а кто нет(killedBySnap == true || false)
+        $I->click(snapPage::$snapButton);//удаляем пользователей
+        $I->wait(10); //сделал 10 секунд, так как иногда при 5 секундах он отрабатывает, а иногда нет
+        
+        //Объявляем две переменные для хранения пользователей (killedBySnap == true || false)
         $usersTrueSnap = array(); 
         $usersFalseSnap = array();
-        //перебираем массив и собираем тех кого должны удалить а кого не должны удалять
+        
+        //перебираем массив и собираем тех кого должны удалить, а кого должны оставить (killedBySnap == true || false)
         foreach($this->users as $snapCondition) {
         if ($snapCondition['canBeKilledBySnap']== true)
          {
             array_push($this->usersTrueSnap, $snapCondition);
          }  else  {
             array_push($this->usersFalseSnap, $snapCondition);}   
-        }
+         }
 
-        //проверка что те кто должныв удалиться - удадлены
+        //Проверка на то, что нет пользователей с snapCondition['canBeKilledBySnap']== true)
         foreach($this->usersTrueSnap as $value) {
         $I -> dontSee($value ['name']);
         }
-        //проверка что те кто не должны удалится - сохранены
+        //Проверка на то, что есть пользователи с snapCondition['canBeKilledBySnap']== false)
         foreach($this->usersFalseSnap as $value) {
             $I -> see($value ['name']);
         }
-        //проверка если данные удалены
-        $I->dontSeeInCollection('people', $this->usersTrueSnap);}
+        //Проверка на то, что пользователи удалились из бд
+        $I->dontSeeInCollection('people', $this->usersTrueSnap);
+        }
 }
