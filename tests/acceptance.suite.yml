@@ -7,11 +7,18 @@
 actor: AcceptanceTester
 modules:
     enabled:
-        - WebDriver:
+         - \Helper\Acceptance
+         - WebDriver
+         - Asserts
+    config:
+        WebDriver:
             url: https://www.saucedemo.com/
             port: 9515
             browser: chrome
             window_size: 1024x768
-        - \Helper\Acceptance
+            capabilities:
+                goog:chromeOptions:
+                         args: [ "--headless", "--disable-gpu" ]
+       
         
 step_decorators: ~        
