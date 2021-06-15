@@ -1,0 +1,17 @@
+name: Workflow
+on: [push]
+
+jobs: 
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/checkout@v2
+    - uses: nanasess/setup-php@master
+      with:
+        php-version: '7.4'
+    - name: Install Dependencies
+      run: composer install
+    - name: Run chromedriver
+      run: nohup $CHROMEWEBDRIVER/chromedriver --url-base=/wd/hub /dev/null 2>&1 &
+    - name: Run tests
+      run: php vendor/bin/codecept run --steps -vvv
