@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites>
-  <testsuite name="acceptance" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="4.367402">
-    <testcase file="C:\Users\itsma\Documents\Kolesa\KolesaUpgrade\tests\acceptance\LoginCest.php" name="loginPage" class="LoginCest" feature="login page" assertions="1" time="4.367402"/>
-  </testsuite>
-  <testsuite name="functional" tests="1" assertions="0" errors="0" failures="0" skipped="0" time="2.503170">
-    <testcase file="C:\Users\itsma\Documents\Kolesa\KolesaUpgrade\tests\functional\HabrPageCest.php" name="visitHabrPage" class="HabrPageCest" feature="visit habr page" assertions="0" time="2.503170"/>
-  </testsuite>
-</testsuites>
